@@ -1,0 +1,35 @@
+from random import*
+
+def cartascoup(x):
+    j = 25
+    for i in range(4):
+        if 5 <= j - (x*2) <= 9:
+            break
+        else:
+            j -= 5
+    return j//5
+
+def onecoup(n):
+    influencia = ['Duque','Capitão','Assassino','Condessa','Embaixador']
+    p = []
+    for x in influencia:
+        for i in range(cartascoup(len(n))):
+            p.append(x)
+    lista = []
+    for x in n:
+        i = choice(p)
+        del p[p.index(i)]
+        j = choice(p)
+        del p[p.index(j)]
+        lista.append(x + " é " + i + " e " + j)
+    return lista,p
+
+n = ['Júlio','Diego','Henrique','Rhuan','Ramon','Kayann']
+player = onecoup(n)[0]
+banco = onecoup(n)[1]
+print(onecoup(n))
+print(cartascoup(len(n)))
+for x in player:
+    print(x)
+for x in banco:
+    print(x)
